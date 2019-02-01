@@ -1,0 +1,4 @@
+-i https://pypi.org/simple
+git+https://cicduser:f35c321e1dd9f4ffa94a3d200a2da371104f2909@github.emcrubicon.com/mawhir/python-xstream.git@08dd9f161feba22748ccd395654b5a83722007be#egg=xstream
+pyyaml==3.13
+pygithub==1.43.5

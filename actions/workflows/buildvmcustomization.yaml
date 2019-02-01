@@ -1,0 +1,69 @@
+version: '2.0'
+name: onboarding.vm.customization
+description: Build VM CloudInit config
+workflows:
+  main:
+    type: direct
+    input:
+      - vmspec
+      - Customizations
+    output:
+      cloudinitspec: '{{ _.cloudinitspec }}'
+    tasks:
+      buildCustomization:
+        workflow: buildCustomization
+        input:
+          vmspec: '{{ _.vmspec }}'
+          Customizations: '{{ _.Customizations }}'
+        publish:
+          cloudinitspec: "{{ task('buildCustomization').result }}"
+
+  buildCustomization:
+    type: direct
+    input:
+      - vmspec
+      - Customizations
+    output:
+      GuestOsType: linux
+      AdministratorPassword: "{{ _.Customizations.get('AdministratorPassword', 'ChangeMe') }}"
+      ComputerNameOption:  1
+      HostName: "{{ _.Customizations.get('HostName', _.vmspec.CustomerDefinedName) }}"
+      DomainName: "{{ _.Customizations.get('DomainName', 'example.com')}}"
+      DnsSearchPaths:
+        - "{{ _.Customizations.get('DomainName', 'example.com') }}"
+        - "your.dns.suffix.here"
+        - localdomain
+      TimeZoneLocation: "US/Eastern"
+      TimeZone: "UTC-05"
+      UseCustomNetworkSettings: true
+      NetworkCustomizations: '{{ _.NetworkCustomizations }}'
+      CustomizationType: 2
+      AuthorizedKeys: '{{ _.Customizations.AuthorizedKeys }}'
+      RunOnceCommands: '{{ _.Customizations.RunOnceCommands }}'
+    tasks:
+      getOStype:
+        action: onboarding.get
+        input:
+          resource: VirtualMachine
+          tenant_id: '{{ _.vmspec.TenantID }}'
+          id: '{{ _.vmspec.SourceTemplateID }}'
+        publish:
+          GuestOsType: "{{ task('getOStype').result.result.Guest.GuestFamily }}"
+
+      NetworkCustomizations:
+        action: onboarding.get
+        input:
+          resource: Network
+          tenant_id: '{{ _.vmspec.TenantID }}'
+          id: '{{ _.vmspec.Nics[0].NetworkID }}'
+        publish:
+          NetworkCustomizations:
+            - NicNumber: "{{ _.Customizations.Networks.get('NicNumber', '0') }}"
+              networkID: "{{ task('NetworkCustomizations').result.result.NetworkID }}"
+              IpAddressMode: 2
+              IpAddress: '{{ _.Customizations.Networks.IpAddress }}'
+              SubnetMask: '{{ _.Customizations.Networks.SubnetMask }}'
+              DefaultGateway: '{{ _.Customizations.Networks.DefaultGateway }}'
+              VirtualMachineNicType: '{{ _.vmspec.Nics[0].AdapterType }}'
+              DnsServerMode: 2
+              DnsAddress: '{{ _.Customizations.Networks.DnsAddress }}'

@@ -1,0 +1,20 @@
+---
+enabled: true
+runner_type: mistral-v2
+entry_point: workflows/buildvmcustomization.yaml
+name: vm.customization
+pack: onboarding
+description: Set cloudinit customation for VM
+parameters:
+  workflow:
+    default: onboarding.vm.customization.main
+    immutable: true
+    type: string
+
+  vmspec:
+    required: true
+    type: object
+  Customizations:
+    required: false
+    type: object
+    default: {}

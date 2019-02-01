@@ -1,0 +1,32 @@
+---
+name: read_file
+pack: onboarding
+runner_type: "python-script"
+description: Get Details on single resource
+enabled: true
+entry_point: "lib/read_file.py"
+parameters:
+    github_url:
+      type: string
+      description: URL of xStream
+      default: "{{config_context.github_url}}"
+      required: true
+    user_name:
+      type: string
+      description: Public Key for xStream
+      default: "{{config_context.github_public_key}}"
+      required: true
+    password:
+      type: string
+      description: Privite Key for xStream
+      default: "{{config_context.github_private_key}}"
+      required: true
+      secret: true
+    repo_name:
+      type: string
+      description: TenantID you wish to preform actions against
+      required: true
+    file_name:
+      type: string
+      description: Resource to query
+      required: true

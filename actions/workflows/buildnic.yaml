@@ -1,0 +1,45 @@
+version: '2.0'
+name: onboarding.nic.build
+description: Build VM Nic specs
+workflows:
+  main:
+    type: direct
+    input:
+      - NetworkName
+      - AdapterType
+      - DeviceKey
+      - TenantID
+      - MacAddress
+    output:
+      NicSpec: '{{ _.NicSpec }}'
+    tasks:
+      buildNicSpec:
+        workflow: buildNicSpec
+        input:
+          TenantID: '{{ _.TenantID }}'
+          NetworkName: '{{ _.NetworkName }}'
+          AdapterType: '{{ _.AdapterType }}'
+          DeviceKey: '{{ _.DeviceKey }}'
+        publish:
+          NicSpec: "{{ task('buildNicSpec').result }}"
+
+  buildNicSpec:
+    type: direct
+    input:
+      - NetworkName
+      - AdapterType
+      - DeviceKey
+      - TenantID
+    output:
+      NetworkID: '{{ _.NetworkID }}'
+      AdapterType: '{{ _.AdapterType }}'
+      DeviceKey: '{{ _.DeviceKey }}'
+    tasks:
+      getNetworkID:
+        action: onboarding.get
+        input:
+          resource: Network
+          tenant_id: '{{ _.TenantID }}'
+          name: '{{ _.NetworkName }}'
+        publish:
+          NetworkID: "{{ task('getNetworkID').result.result.NetworkID }}"

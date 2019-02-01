@@ -1,0 +1,63 @@
+version: '2.0'
+name: onboarding.disk.build
+description: Build VM Disk specs
+workflows:
+  main:
+    type: direct
+    input:
+      - TenantID
+      - TargetSite
+      - Storage
+      - Profile
+      - CapacityKB
+      - DeviceKey
+    output:
+      DiskSpec: '{{ _.DiskSpec }}'
+    tasks:
+      buildDiskSpec:
+        workflow: buildDiskSpec
+        input:
+          TenantID: '{{ _.TenantID }}'
+          Storage: '{{ _.Storage }}'
+          Profile: '{{ _.Profile }}'
+          TargetSite: '{{ _.TargetSite }}'
+          CapacityKB: '{{ _.CapacityKB }}'
+          DeviceKey: '{{ _.DeviceKey }}'
+        publish:
+          DiskSpec: "{{ task('buildDiskSpec').result }}"
+
+  buildDiskSpec:
+    type: direct
+    input:
+      - TenantID
+      - Storage
+      - Profile
+      - TargetSite
+      - CapacityKB
+      - DeviceKey
+    output:
+      StorageID: '{{ _.StorageID }}'
+      StorageProfileID: '{{ _.StorageProfileID }}'
+      CapacityKB: '{{ _.CapacityKB }}'
+      DeviceKey: '{{ _.DeviceKey }}'
+    tasks:
+      getStorageID:
+        action: onboarding.get
+        input:
+          resource: Storage
+          tenant_id: '{{ _.TenantID }}'
+          name: '{{ _.Storage }}'
+        publish:
+          StorageID: "{{ task('getStorageID').result.result.StorageID }}"
+          SiteID: "{{ task('getStorageID').result.result.Hypervisor.Site.SiteID }}"
+          FreeSpaceKB: "{{ task('getStorageID').result.result.FreeSpaceKB }}"
+
+      getProfileID:
+        action: onboarding.get
+        input:
+          resource: Profile
+          tenant_id: '{{ _.TenantID }}'
+          name: '{{ _.Profile }}'
+        publish:
+          StorageProfileCatagory: "{{ task('getProfileID').result.result.ProfileCategory }}"
+          StorageProfileID: "{{ task('getProfileID').result.result.ProfileID }}"

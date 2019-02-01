@@ -1,0 +1,52 @@
+---
+description: Run a local linux command
+enabled: true
+runner_type: mistral-v2
+entry_point: workflows/buildvm.yaml
+name: vm.build
+pack: onboarding
+parameters:
+  workflow:
+    default: onboarding.vm.build.main
+    immutable: true
+    type: string
+
+  Tenant:
+    required: true
+    type: string
+  ServiceOffering:
+    required: true
+    type: string
+  ComputeProfile:
+    required: true
+    type: string
+  Site:
+    required: true
+    type: string
+  Template:
+    required: true
+    type: string
+  VmName:
+    required: false
+    type: string
+  Description:
+    required: false
+    type: string
+  NumCpu:
+    required: true
+    type: integer
+  RamAllocatedMB:
+    required: true
+    type: integer
+  OS:
+    required: true
+    type: string
+  Disks:
+    required: true
+    type: array
+  Networks:
+    required: false
+    type: array
+  Customizations:
+    required: false
+    type: object

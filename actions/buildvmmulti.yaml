@@ -1,0 +1,17 @@
+---
+description: Run a local linux command
+enabled: true
+runner_type: mistral-v2
+entry_point: workflows/buildvmmulti.yaml
+name: vm.buildmulti
+pack: onboarding
+parameters:
+  workflow:
+    default: onboarding.vm.buildmulti.main
+    immutable: true
+    type: string
+
+  spec_file:
+    required: true
+    type: string
+    description: Name of specfile to to pull from vsc to build VMS

@@ -1,0 +1,214 @@
+version: '2.0'
+name: onboarding.vm.build
+description: Build VM through xstream api
+workflows:
+  main:
+    type: direct
+    input:
+      - Tenant
+      - ServiceOffering
+      - ComputeProfile
+      - Site
+      - Template
+      - VmName
+      - Description
+      - NumCpu
+      - RamAllocatedMB
+      - OS
+      - Disks
+      - Networks
+      - Customizations
+    output:
+      vmspec: '{{ _.vmspec }}'
+      TaskStatus: '{{ _.TaskStatus }}'
+    tasks:
+      buildVMSpec:
+        workflow: buildVMSpec
+        input:
+          Tenant: '{{ _.Tenant }}'
+          ServiceOffering: '{{ _.ServiceOffering }}'
+          ComputeProfile: '{{ _.ComputeProfile }}'
+          Site: '{{ _.Site }}'
+          Template: '{{ _.Template }}'
+          VmName: '{{ _.VmName }}'
+          Description: '{{ _.Description }}'
+          NumCpu: '{{ _.NumCpu }}'
+          RamAllocatedMB: '{{ _.RamAllocatedMB }}'
+          OS: '{{ _.OS }}'
+          Disks: '{{ _.Disks }}'
+          Networks: '{{ _.Networks }}'
+        publish:
+          TenantID: "{{ task('buildVMSpec').result.TenantID }}"
+          vmspec: "{{ task('buildVMSpec').result }}"
+        on-success:
+          - buildVMCustomization
+
+      buildVMCustomization:
+        workflow: buildVMCustomization
+        input:
+          vmspec: '{{ _.vmspec }}'
+          Customizations: '{{ _.Customizations }}'
+        publish:
+          cloudinitspec: "{{ task('buildVMCustomization').result.cloudinitspec }}"
+        on-success:
+          - setVM
+
+      setVM:
+        workflow: setVM
+        input:
+          vmspec: '{{ _.vmspec }}'
+          cloudinitspec: '{{ _.cloudinitspec }}'
+        publish:
+          TaskStatus:  "{{ task('setVM').result.TaskStatus }}"
+
+  buildVMSpec:
+    type: direct
+    input:
+      - Tenant
+      - ServiceOffering
+      - ComputeProfile
+      - Site
+      - Template
+      - VmName
+      - Description
+      - NumCpu
+      - RamAllocatedMB
+      - OS
+      - Disks
+      - Networks
+    output:
+      TenantID: '{{ _.TenantID }}'
+      ServiceOfferingID: '{{ _.ServiceOfferingID }}'
+      ProfileID: '{{ _.ComputeProfileID }}'
+      ComputeProfileID: '{{ _.ComputeProfileID }}'
+      Hypervisor:
+        Site:
+          SiteID: '{{ _.SiteID }}'
+      SourceTemplateID: '{{ _.TemplateID }}'
+      CustomerDefinedName: '{{ _.VmName }}'
+      Description: '{{ _.Description }}'
+      NumCpu: '{{ _.NumCpu }}'
+      RamAllocatedMB: '{{ _.RamAllocatedMB }}'
+      OS: '{{ _.OS }}'
+      Nics: '{{ _.NicSpec }}'
+      Disks: '{{ _.DiskSpec }}'
+    tasks:
+      getTenantID:
+        action: onboarding.get
+        input:
+          resource: Tenant
+          name: '{{ _.Tenant }}'
+        publish:
+          TenantID: "{{ task('getTenantID').result.result.TenantID }}"
+        on-success:
+          - getServiceOfferingID
+          - buildNic
+          - getProfileID
+          - getTemplateID
+          - getSiteID
+
+      getServiceOfferingID:
+        action: onboarding.get
+        input:
+          resource: ServiceOffering
+          tenant_id: '{{ _.TenantID }}'
+          name: '{{ _.ServiceOffering }}'
+        publish:
+          ServiceOfferingID: "{{ task('getServiceOfferingID').result.result.ServiceOfferingID }}"
+
+      getProfileID:
+        action: onboarding.get
+        input:
+          resource: Profile
+          tenant_id: '{{ _.TenantID }}'
+          name: '{{ _.ComputeProfile }}'
+        publish:
+          ComputeProfileID: "{{ task('getProfileID').result.result.ProfileID }}"
+
+      getSiteID:
+        action: onboarding.get
+        input:
+          resource: Site
+          name: '{{ _.Site }}'
+        publish:
+          SiteID: "{{ task('getSiteID').result.result.SiteID }}"
+        on-success:
+          - buildDisk
+
+      getTemplateID:
+        action: onboarding.get
+        input:
+          resource: VirtualMachine
+          tenant_id: '{{ _.TenantID }}'
+          name: '{{ _.Template }}'
+        publish:
+          TemplateID: "{{ task('getTemplateID').result.result.VirtualMachineID }}"
+          IsTemplate: "{{ task('getTemplateID').result.result.IsTemplate }}"
+
+      buildNic:
+        action: onboarding.nic.build
+        with-items: "Network in {{ _.Networks }}"
+        input:
+          NetworkName: '{{ _.Network.NetworkName }}'
+          AdapterType: '{{ _.Network.AdapterType }}'
+          DeviceKey: '{{ _.Network.DeviceKey }}'
+          TenantID: '{{ _.TenantID }}'
+          MacAddress: '{{ _.Network.MacAddress }}'
+        publish:
+          NicSpec: "{{ task('buildNic').result | map(attribute='NicSpec') | list }}"
+
+      buildDisk:
+        action: onboarding.disk.build
+        with-items: "Disk in {{ _.Disks }}"
+        input:
+          TenantID: '{{ _.TenantID }}'
+          TargetSite: '{{ _.SiteID }}'
+          Storage: '{{ _.Disk.Storage }}'
+          Profile: '{{ _.Disk.StorageProfile }}'
+          CapacityKB: '{{ _.Disk.CapacityKB }}'
+          DeviceKey: '{{ _.Disk.DeviceKey }}'
+        publish:
+          DiskSpec: "{{ task('buildDisk').result | map(attribute='DiskSpec') | list }}"
+
+  buildVMCustomization:
+    type: direct
+    input:
+      - vmspec
+      - Customizations
+    output:
+      cloudinitspec: '{{ _.cloudinitspec }}'
+    tasks:
+      buildVMCustomization:
+        action: onboarding.vm.customization
+        input:
+          vmspec: '{{ _.vmspec }}'
+          Customizations: '{{ _.Customizations }}'
+        publish:
+          cloudinitspec: "{{ task('buildVMCustomization').result.cloudinitspec }}"
+
+  setVM:
+    type: direct
+    input:
+      - vmspec
+      - cloudinitspec
+    output:
+      TaskStatus: '{{ _.TaskStatus }}'
+    tasks:
+      setVM:
+        action: onboarding.vm.setvm
+        input:
+          tenant_id: '{{ _.vmspec.TenantID }}'
+          vmspec: '{{ _.vmspec }}'
+          cloudinitspec: '{{ _.cloudinitspec }}'
+        publish:
+          TaskID: "{{ task('setVM').result.result.MessageId }}"
+        on-success:
+          - CheckStatus
+
+      CheckStatus:
+        action: onboarding.get
+        input:
+          resource: TaskInfo
+          id: '{{ _.TaskID }}'
+        publish:
+          TaskStatus: "{{ task('CheckStatus').result.result.StateMessage }}"

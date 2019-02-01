@@ -1,0 +1,31 @@
+---
+  xstream_url:
+    description: "URL of xstream API Endpoint"
+    type: "string"
+    required: True
+  xstream_public_key:
+    description: "xStream public key"
+    type: "string"
+    required: true
+  xstream_private_key:
+    description: "xStream privitate key"
+    type: "string"
+    secret: true
+    required: True
+  tenant_id:
+    description: "TenantID that will be for actions"
+    type: "string"
+    required: true
+  github_url:
+    description: "URL of xstream API Endpoint"
+    type: "string"
+    required: True
+  github_public_key:
+    description: "xStream public key"
+    type: "string"
+    required: true
+  github_private_key:
+    description: "xStream privitate key"
+    type: "string"
+    secret: true
+    required: True

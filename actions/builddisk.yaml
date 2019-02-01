@@ -1,0 +1,30 @@
+---
+enabled: true
+runner_type: mistral-v2
+entry_point: workflows/builddisk.yaml
+name: disk.build
+pack: onboarding
+parameters:
+  workflow:
+    default: onboarding.disk.build.main
+    immutable: true
+    type: string
+  TenantID:
+    required: true
+    type: string
+  TargetSite:
+    required: true
+    type: string
+
+  Storage:
+    required: true
+    type: string
+  Profile:
+    required: true
+    type: string
+  CapacityKB:
+    required: true
+    type: integer
+  DeviceKey:
+    required: false
+    type: integer

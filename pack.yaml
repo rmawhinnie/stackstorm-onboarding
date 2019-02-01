@@ -1,0 +1,9 @@
+---
+name : onboarding
+description : StackStorm pack for onboarding new vms
+keywords:
+  - xstream
+  - onboarding
+version : 0.0.1
+author : Enterprise SRE
+email : autobots@virtustream.com

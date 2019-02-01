@@ -1,0 +1,1664 @@
+[Version]
+required = false
+type = "str"
+
+[Site.SiteID]
+required = false
+type = "auto"
+
+[Site.Code]
+required = false
+type = "str"
+
+[Site.Name]
+required = false
+type = "str"
+
+[Site.Topology]
+required = false
+type = "int"
+
+[Site.TenantID]
+required = false
+type = "str"
+
+[Site.Active]
+required = false
+type = "bool"
+
+[ServiceOffering.ServiceOfferingID]
+required = false
+type = "auto"
+
+[ServiceOffering.Description]
+required = false
+type = "str"
+
+[ServiceOffering.Name]
+required = true
+type = "str"
+
+[ServiceOffering.TenantID]
+required = true
+type = "str"
+
+[ServiceOffering.ProfileIDs]
+required = true
+type = "list"
+
+[ServiceOffering.ModifyDateUtc]
+required = false
+type = "str"
+
+[ServiceOffering.DefaultQuotas]
+required = false
+type = "str"
+
+[Profile.ProfileID]
+required = false
+type = "auto"
+
+[Profile.Name]
+required = true
+type = "str"
+
+[Profile.Description]
+required = false
+type = "str"
+
+[Profile.TenantID]
+required = true
+type = "str"
+
+[Profile.ProfileCategory]
+required = false
+type = "int"
+
+[Profile.ModifyDateUtc]
+required = false
+type = "str"
+
+[Tenant.TenantID]
+required = false
+type = "auto"
+
+[Tenant.Name]
+required = true
+type = "str"
+
+[Tenant.Description]
+required = false
+type = "str"
+
+[Tenant.CustomerBillingCode]
+required = false
+type = "str"
+
+[Tenant.CatalogID]
+required = false
+type = "str"
+
+[Tenant.TenantType]
+required = false
+type = "str"
+
+[Tenant.Currency]
+required = false
+type = "str"
+
+[Tenant.ResourceGroups]
+required = false
+type = "str"
+
+[Tenant.OrganizationalUnit]
+required = false
+type = "str"
+
+[Tenant.Ancestors]
+required = false
+type = "str"
+
+[Tenant.ParentTenantID]
+required = false
+type = "str"
+
+[Tenant.HomeSiteID]
+required = false
+type = "str"
+
+[Tenant.Features]
+required = false
+type = "str"
+
+[Tenant.BusinessGroups]
+required = false
+type = "dict"
+
+[Tenant.ResourceRoles]
+required = false
+type = "dict"
+
+[Tenant.UserGroups]
+required = false
+type = "dict"
+
+[Tenant.Tags]
+required = false
+type = "dict"
+
+[Tenant.Acl]
+required = false
+type = "dict"
+
+[Tenant.Preferences]
+required = false
+type = "dict"
+
+[Tenant.DefaultAcl]
+required = false
+type = "dict"
+
+[User.UserID]
+required = false
+type = "auto"
+
+[User.UserPrincipalName]
+required = false
+type = "str"
+
+[User.DistinguishedName]
+required = false
+type = "str"
+
+[User.FirstName]
+required = true
+type = "str"
+
+[User.LastName]
+required = true
+type = "str"
+
+[User.Description]
+required = false
+type = "str"
+
+[User.EmailAddress]
+required = true
+type = "str"
+
+[User.PhoneNumber]
+required = false
+type = "str"
+
+[User.LastLogin]
+required = false
+type = "str"
+
+[User.ExpirationDate]
+required = false
+type = "str"
+
+[User.OrganizationalUnit]
+required = false
+type = "str"
+
+[User.TenantID]
+required = true
+type = "str"
+
+[User.Preferences]
+required = false
+type = "list"
+
+[User.IsDisabled]
+required = false
+type = "bool"
+
+[User.IsRemoved]
+required = false
+type = "bool"
+
+[User.IsOtpEnrolled]
+required = false
+type = "bool"
+
+[User.IsOtpEnrollmentInitiated]
+required = false
+type = "bool"
+
+[User.OtpEnrollmentId]
+required = false
+type = "str"
+
+[User.OtpEnrollmentStartDate]
+required = false
+type = "str"
+
+[User.OtpEnrollmentFinishDate]
+required = false
+type = "str"
+
+[User.Groups]
+required = false
+type = "list"
+
+[User.Acl]
+required = false
+type = "list"
+
+[User.UserStore]
+required = false
+type = "str"
+
+[User.SingleUseToken]
+required = false
+type = "str"
+
+[VirtualMachine.ComputeProfileID]
+required = false
+type = "str"
+
+[VirtualMachine.CreatedBy]
+required = false
+type = "str"
+
+[VirtualMachine.IPAddress]
+required = false
+type = "str"
+
+[VirtualMachine.ServiceOfferingID]
+required = false
+type = "str"
+
+[VirtualMachine.SourceTemplateID]
+required = false
+type = "str"
+
+[VirtualMachine.TenantID]
+required = false
+type = "str"
+
+[VirtualMachine.VirtualMachineID]
+required = false
+type = "auto"
+
+[VirtualMachine.CpuAllocatedMHz]
+required = false
+type = "str"
+
+[VirtualMachine.CpuLimitMHz]
+required = false
+type = "str"
+
+[VirtualMachine.CpuReservationMHz]
+required = false
+type = "str"
+
+[VirtualMachine.CpuShares]
+required = false
+type = "str"
+
+[VirtualMachine.CpuUsedAvgMHz]
+required = false
+type = "str"
+
+[VirtualMachine.Description]
+required = false
+type = "str"
+
+[VirtualMachine.DnsName]
+required = false
+type = "str"
+
+[VirtualMachine.Group]
+required = false
+type = "str"
+
+[VirtualMachine.NumCpu]
+required = false
+type = "str"
+
+[VirtualMachine.NumNic]
+required = false
+type = "str"
+
+[VirtualMachine.NumVirtualDisk]
+required = false
+type = "str"
+
+[VirtualMachine.OS]
+required = false
+type = "str"
+
+[VirtualMachine.OSFullName]
+required = false
+type = "str"
+
+[VirtualMachine.ParentHost]
+required = false
+type = "str"
+
+[VirtualMachine.PowerState]
+required = false
+type = "str"
+
+[VirtualMachine.RamActiveAvgKB]
+required = false
+type = "str"
+
+[VirtualMachine.RamAllocatedMB]
+required = false
+type = "str"
+
+[VirtualMachine.RamLimitMB]
+required = false
+type = "str"
+
+[VirtualMachine.RamReservationMB]
+required = false
+type = "str"
+
+[VirtualMachine.RamShares]
+required = false
+type = "str"
+
+[VirtualMachine.RamUsedAvgKB]
+required = false
+type = "str"
+
+[VirtualMachine.ResourcePoolID]
+required = false
+type = "str"
+
+[VirtualMachine.ResourcePoolIdentifier]
+required = false
+type = "str"
+
+[VirtualMachine.StorageCapacityAllocatedMB]
+required = false
+type = "str"
+
+[VirtualMachine.StorageCapacityUsedMB]
+required = false
+type = "str"
+
+[VirtualMachine.StorageCapacityUsedPc]
+required = false
+type = "str"
+
+[VirtualMachine.Timestamp]
+required = false
+type = "str"
+
+[VirtualMachine.HypervisorToolsStatus]
+required = false
+type = "str"
+
+[VirtualMachine.HypervisorToolsVersion]
+required = false
+type = "str"
+
+[VirtualMachine.CpuHotAddEnabled]
+required = false
+type = "str"
+
+[VirtualMachine.CpuHotRemoveEnabled]
+required = false
+type = "str"
+
+[VirtualMachine.MemoryHotAddEnabled]
+required = false
+type = "str"
+
+[VirtualMachine.CreateDate]
+required = false
+type = "str"
+
+[VirtualMachine.ExternalIdentifier]
+required = false
+type = "str"
+
+[VirtualMachine.Name]
+required = false
+type = "str"
+
+[VirtualMachine.CustomerDefinedName]
+required = false
+type = "str"
+
+[VirtualMachine.IsRemoved]
+required = false
+type = "str"
+
+[VirtualMachine.ManagedResourceType]
+required = false
+type = "str"
+
+[VirtualMachine.UniqueId]
+required = false
+type = "str"
+
+[VirtualMachine.Cdroms]
+required = false
+type = "str"
+
+[VirtualMachine.CustomizationSpecification]
+required = false
+type = "str"
+
+[VirtualMachine.ResourceGroups]
+required = false
+type = "str"
+
+[VirtualMachine.BootTime]
+required = false
+type = "str"
+
+[VirtualMachine.Acl]
+required = false
+type = "dict"
+
+[VirtualMachine.AllowedGeographicalLocations]
+required = false
+type = "str"
+
+[VirtualMachine.CorrelationId]
+required = false
+type = "str"
+
+[VirtualMachine.HardwareTemplateID]
+required = false
+type = "str"
+
+[VirtualMachine.IsTemplate]
+required = false
+type = "bool"
+
+[VirtualMachine.AppliedCategories]
+required = false
+type = "list"
+
+[VirtualMachine.ConsoleConnectionCount]
+required = false
+type = "int"
+
+[VirtualMachine.CurrentSnapshotID]
+required = false
+type = "str"
+
+[VirtualMachine.IsGlobalTemplate]
+required = false
+type = "str"
+
+[VirtualMachine.Snapshots]
+required = false
+type = "str"
+
+[Network.NetworkID]
+required = false
+type = "str"
+
+[Network.ComputeResourceIDs]
+required = false
+type = "str"
+
+[Network.VirtualSwitchID]
+required = false
+type = "str"
+
+[Network.VlanId]
+required = false
+type = "str"
+
+[Network.Timestamp]
+required = false
+type = "str"
+
+[Network.ExternalIdentifier]
+required = false
+type = "str"
+
+[Network.Name]
+required = false
+type = "str"
+
+[Network.CustomerDefinedName]
+required = false
+type = "str"
+
+[Network.IsRemoved]
+required = false
+type = "bool"
+
+[Network.ManagedResourceType]
+required = false
+type = "str"
+
+[Hypervisor.HypervisorID]
+required = false
+type = "auto"
+
+[Hypervisor.Code]
+required = false
+type = "str"
+
+[Hypervisor.Name]
+required = false
+type = "str"
+
+[Hypervisor.TenantID]
+required = false
+type = "str"
+
+[Hypervisor.DriverID]
+required = false
+type = "str"
+
+[Hypervisor.Type]
+required = false
+type = "str"
+
+[Hypervisor.Version]
+required = false
+type = "str"
+
+[Hypervisor.InstanceUuid]
+required = false
+type = "str"
+
+[HypervisorHost.HypervisorHostID]
+required = false
+type = "auto"
+
+[HypervisorHost.Port]
+required = false
+type = "int"
+
+[HypervisorHost.VmotionEnabled]
+required = false
+type = "bool"
+
+[HypervisorHost.Timestamp]
+required = false
+type = "str"
+
+[HypervisorHost.CpuMhz]
+required = false
+type = "int"
+
+[HypervisorHost.CpuModel]
+required = false
+type = "str"
+
+[HypervisorHost.MemorySize]
+required = false
+type = "int"
+
+[HypervisorHost.Model]
+required = false
+type = "str"
+
+[HypervisorHost.NumCpuCores]
+required = false
+type = "int"
+
+[HypervisorHost.NumCpuPkgs]
+required = false
+type = "int"
+
+[HypervisorHost.NumCpuThreads]
+required = false
+type = "int"
+
+[HypervisorHost.NumHBAs]
+required = false
+type = "int"
+
+[HypervisorHost.NumNics]
+required = false
+type = "int"
+
+[HypervisorHost.Uuid]
+required = false
+type = "str"
+
+[HypervisorHost.Vendor]
+required = false
+type = "str"
+
+[HypervisorHost.ManagementServerIp]
+required = false
+type = "str"
+
+[HypervisorHost.OverallCpuUsage]
+required = false
+type = "int"
+
+[HypervisorHost.OverallMemoryUsage]
+required = false
+type = "int"
+
+[HypervisorHost.Uptime]
+required = false
+type = "int"
+
+[HypervisorHost.BootTime]
+required = false
+type = "str"
+
+[HypervisorHost.ConnectionState]
+required = false
+type = "str"
+
+[HypervisorHost.PowerState]
+required = false
+type = "str"
+
+[HypervisorHost.ExternalIdentifier]
+required = false
+type = "str"
+
+[HypervisorHost.TenantID]
+required = false
+type = "str"
+
+[HypervisorHost.Name]
+required = false
+type = "str"
+
+[HypervisorHost.ManagedResourceType]
+required = false
+type = "str"
+
+[Storage.StorageID]
+required = false
+type = "auto"
+
+[Storage.CapacityKB]
+required = false
+type = "int"
+
+[Storage.ComputeResourceIDs]
+required = false
+type = "list"
+
+[Storage.HypervisorHostIDs]
+required = false
+type = "list"
+
+[Storage.FreeSpaceKB]
+required = false
+type = "int"
+
+[Storage.Timestamp]
+required = false
+type = "str"
+
+[Storage.UsedSpaceKB]
+required = false
+type = "int"
+
+[Storage.ExternalIdentifier]
+required = false
+type = "str"
+
+[Storage.Name]
+required = false
+type = "str"
+
+[Storage.CustomerDefinedName]
+required = false
+type = "str"
+
+[Storage.ManagedResourceType]
+required = false
+type = "str"
+
+[Storage.Hypervisor]
+[[Storage.Hypervisor.Acl]]
+
+[Storage.Hypervisor.Acl.UserGroup]
+required = false
+type = "str"
+[Storage.Hypervisor.Acl.ResourceRole]
+required = false
+type = "str"
+[Storage.Hypervisor.Acl.Permissions]
+required = false
+type = "int"
+
+[TaskInfo.TaskInfoID]
+required = false
+type = "str"
+
+[TaskInfo.TaskId]
+required = false
+type = "str"
+
+[TaskInfo.CorrelationId]
+required = false
+type = "str"
+
+[TaskInfo.CustomerId]
+required = false
+type = "int"
+
+[TaskInfo.TaskName]
+required = false
+type = "str"
+
+[TaskInfo.MessageName]
+required = false
+type = "str"
+
+[TaskInfo.State]
+required = false
+type = "int"
+
+[TaskInfo.StateMessage]
+required = false
+type = "str"
+
+[TaskInfo.Progress]
+required = false
+type = "int"
+
+[TaskInfo.StartTime]
+required = false
+type = "str"
+
+[TaskInfo.FinishTime]
+required = false
+type = "str"
+
+[TaskInfo.UserName]
+required = false
+type = "str"
+
+[TaskInfo.PortalUserName]
+required = false
+type = "str"
+
+[TaskInfo.HypervisorID]
+required = false
+type = "str"
+
+[TaskInfo.ManagedResourceID]
+required = false
+type = "str"
+
+[TaskInfo.ManagedResourceType]
+required = false
+type = "str"
+
+[TaskInfo.ManagedResourceIdentifier]
+required = false
+type = "str"
+
+[TaskInfo.ManagedResourceName]
+required = false
+type = "str"
+
+[TaskInfo.TenantID]
+required = false
+type = "str"
+
+[TaskInfo.Cancellable]
+required = false
+type = "str"
+
+[TaskInfo.CreatedDate]
+required = false
+type = "str"
+
+[TaskInfo.CreatedBy]
+required = false
+type = "str"
+
+[TaskInfo.EditedDate]
+required = false
+type = "str"
+
+[TaskInfo.EditedBy]
+required = false
+type = "str"
+
+[TaskInfo.SiteID]
+required = false
+type = "str"
+
+[TaskInfo._rt]
+required = false
+type = "str"
+
+[Site.Region.RegionID]
+required = false
+type = "str"
+
+[Site.Region.Code]
+required = false
+type = "str"
+
+[Site.Region.Name]
+required = false
+type = "str"
+
+[Site.Region.TenantID]
+required = false
+type = "str"
+
+[Site.Region.Active]
+required = false
+type = "bool"
+
+[Site.Settings.AllowCpuRamAdjust]
+required = false
+type = "str"
+
+[Site.Settings.DisableStorageAlarmEmails]
+required = false
+type = "str"
+
+[ServiceOffering.Acl.UserGroup]
+required = false
+type = "str"
+
+[ServiceOffering.Acl.ResourceRole]
+required = false
+type = "str"
+
+[ServiceOffering.Acl.Permissions]
+required = false
+type = "int"
+
+[Profile.ProfileAttributes.ProfileAttributeID]
+required = false
+type = "auto"
+
+[Profile.ProfileAttributes.TenantID]
+required = true
+type = "str"
+
+[Profile.ProfileAttributes.Name]
+required = true
+type = "str"
+
+[Profile.ProfileAttributes.SelectedOption]
+required = true
+type = "str"
+
+[Profile.ProfileAttributes.Options]
+required = true
+type = "list"
+
+[Profile.ProfileAttributes.ProfileCategory]
+required = true
+type = "int"
+
+[Profile.Acl.UserGroup]
+required = false
+type = "str"
+
+[Profile.Acl.ResourceRole]
+required = false
+type = "str"
+
+[Profile.Acl.Permissions]
+required = true
+type = "int"
+
+[VirtualMachine.Cdroms.VirtualMachineCdromID]
+required = false
+type = "str"
+
+[VirtualMachine.Cdroms.ControllerKey]
+required = false
+type = "str"
+
+[VirtualMachine.Cdroms.DeviceKey]
+required = false
+type = "str"
+
+[VirtualMachine.Cdroms.FileSizeKB]
+required = false
+type = "str"
+
+[VirtualMachine.Cdroms.UnitNumber]
+required = false
+type = "str"
+
+[VirtualMachine.Disks.VirtualMachineDiskID]
+required = false
+type = "str"
+
+[VirtualMachine.Disks.StorageID]
+required = false
+type = "str"
+
+[VirtualMachine.Disks.StorageIdentifier]
+required = false
+type = "str"
+
+[VirtualMachine.Disks.CapacityKB]
+required = false
+type = "str"
+
+[VirtualMachine.Disks.ControllerKey]
+required = false
+type = "str"
+
+[VirtualMachine.Disks.ControllerBusNumber]
+required = false
+type = "str"
+
+[VirtualMachine.Disks.DeviceKey]
+required = false
+type = "str"
+
+[VirtualMachine.Disks.DiskFileName]
+required = false
+type = "str"
+
+[VirtualMachine.Disks.DiskMode]
+required = false
+type = "str"
+
+[VirtualMachine.Disks.UnitNumber]
+required = false
+type = "str"
+
+[VirtualMachine.Nics.VirtualMachineNicID]
+required = false
+type = "str"
+
+[VirtualMachine.Nics.NetworkID]
+required = false
+type = "str"
+
+[VirtualMachine.Nics.NetworkIdentifier]
+required = false
+type = "str"
+
+[VirtualMachine.Nics.AdapterType]
+required = false
+type = "str"
+
+[VirtualMachine.Guest.Networks]
+required = false
+type = "str"
+
+[VirtualMachine.Guest.GuestFamily]
+required = false
+type = "str"
+
+[VirtualMachine.Guest.GuestFullName]
+required = false
+type = "str"
+
+[VirtualMachine.Guest.GuestState]
+required = false
+type = "str"
+
+[VirtualMachine.Guest.HostName]
+required = false
+type = "str"
+
+[VirtualMachine.Guest.ToolsStatus]
+required = false
+type = "str"
+
+[VirtualMachine.Guest.ToolsVersion]
+required = false
+type = "str"
+
+[VirtualMachine.Guest.ToolsVersionStatus]
+required = false
+type = "str"
+
+[VirtualMachine.Guest.ToolsRunningStatus]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.HypervisorID]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Code]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Name]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.TenantID]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.DriverID]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Type]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Version]
+required = false
+type = "str"
+
+[Network.Hypervisor.HypervisorID]
+required = false
+type = "str"
+
+[Network.Hypervisor.Code]
+required = false
+type = "str"
+
+[Network.Hypervisor.Name]
+required = false
+type = "str"
+
+[Network.Hypervisor.TenantID]
+required = false
+type = "str"
+
+[Network.Hypervisor.DriverID]
+required = false
+type = "str"
+
+[Network.Hypervisor.Type]
+required = false
+type = "str"
+
+[Network.Hypervisor.Version]
+required = false
+type = "str"
+
+[Network.Hypervisor.SiteTenantID]
+required = false
+type = "str"
+
+[Hypervisor.Acl.UserGroup]
+required = false
+type = "str"
+
+[Hypervisor.Acl.ResourceRole]
+required = false
+type = "str"
+
+[Hypervisor.Acl.Permissions]
+required = false
+type = "int"
+
+[Hypervisor.Site.SiteID]
+required = false
+type = "str"
+
+[Hypervisor.Site.Code]
+required = false
+type = "str"
+
+[Hypervisor.Site.Name]
+required = false
+type = "str"
+
+[Hypervisor.Site.Topology]
+required = false
+type = "int"
+
+[Hypervisor.Site.TenantID]
+required = false
+type = "str"
+
+[Hypervisor.Site.Active]
+required = false
+type = "bool"
+
+[HypervisorHost.TpmPcrValues.PcrNumber]
+required = false
+type = "int"
+
+[HypervisorHost.TpmPcrValues.DigestMethod]
+required = false
+type = "str"
+
+[HypervisorHost.TpmPcrValues.DigestValue]
+required = false
+type = "list"
+
+[HypervisorHost.Acl.UserGroup]
+required = false
+type = "str"
+
+[HypervisorHost.Acl.ResourceRole]
+required = false
+type = "str"
+
+[HypervisorHost.Acl.Permissions]
+required = false
+type = "int"
+
+[HypervisorHost.Product.APIVersion]
+required = false
+type = "str"
+
+[HypervisorHost.Product.Build]
+required = false
+type = "str"
+
+[HypervisorHost.Product.LicenseProductName]
+required = false
+type = "str"
+
+[HypervisorHost.Product.LicenseProductVersion]
+required = false
+type = "str"
+
+[HypervisorHost.Product.Name]
+required = false
+type = "str"
+
+[HypervisorHost.Product.Vendor]
+required = false
+type = "str"
+
+[HypervisorHost.Product.Version]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.HypervisorID]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.Code]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.Name]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.TenantID]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.DriverID]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.Type]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.Version]
+required = false
+type = "str"
+
+[Storage.Hypervisor.HypervisorID]
+required = false
+type = "str"
+
+[Storage.Hypervisor.Code]
+required = false
+type = "str"
+
+[Storage.Hypervisor.Name]
+required = false
+type = "str"
+
+[Storage.Hypervisor.TenantID]
+required = false
+type = "str"
+
+[Storage.Hypervisor.DriverID]
+required = false
+type = "str"
+
+[Storage.Hypervisor.Type]
+required = false
+type = "str"
+
+[TaskInfo.Acl.UserGroup]
+required = false
+type = "str"
+
+[TaskInfo.Acl.ResourceRole]
+required = false
+type = "str"
+
+[TaskInfo.Acl.Permissions]
+required = false
+type = "int"
+
+[TaskInfo.Result.ConsoleLocationURI]
+required = false
+type = "str"
+
+[Site.Settings.Authentication.Endpoint]
+required = false
+type = "str"
+
+[Site.Settings.Storage.SupportedProvisioningTypes]
+required = false
+type = "str"
+
+[Site.Settings.Storage.IsolationLevel]
+required = false
+type = "str"
+
+[Site.Settings.Rid.LocationCode]
+required = false
+type = "str"
+
+[Site.Settings.Rid.CountryCode]
+required = false
+type = "str"
+
+[Site.Settings.VSphere.RenameResourceOnAssignment]
+required = false
+type = "str"
+
+[VirtualMachine.Nics.DeviceKey.MacAddress]
+required = false
+type = "str"
+
+[VirtualMachine.Guest.Disks.CapacityKB]
+required = false
+type = "str"
+
+[VirtualMachine.Guest.Disks.FreeSpaceKB]
+required = false
+type = "str"
+
+[VirtualMachine.Guest.Disks.DiskPath]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Acl.UserGroup]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Acl.ResourceRole]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Acl.Permissions]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Site.SiteID]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Site.Code]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Site.Name]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Site.Topology]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Site.TenantID]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Site.Active]
+required = false
+type = "str"
+
+[Network.Hypervisor.Acl.UserGroup]
+required = false
+type = "str"
+
+[Network.Hypervisor.Acl.ResourceRole]
+required = false
+type = "str"
+
+[Network.Hypervisor.Acl.Permissions]
+required = false
+type = "int"
+
+[Network.Hypervisor.Site.SiteID]
+required = false
+type = "str"
+
+[Network.Hypervisor.Site.Code]
+required = false
+type = "str"
+
+[Network.Hypervisor.Site.Name]
+required = false
+type = "str"
+
+[Network.Hypervisor.Site.Topology]
+required = false
+type = "int"
+
+[Network.Hypervisor.Site.Active]
+required = false
+type = "bool"
+
+[Hypervisor.Site.Region.RegionID]
+required = false
+type = "str"
+
+[Hypervisor.Site.Region.Code]
+required = false
+type = "str"
+
+[Hypervisor.Site.Region.Name]
+required = false
+type = "str"
+
+[Hypervisor.Site.Region.TenantID]
+required = false
+type = "str"
+
+[Hypervisor.Site.Region.Active]
+required = false
+type = "bool"
+
+[Hypervisor.Site.Settings.AllowCpuRamAdjust]
+required = false
+type = "str"
+
+[Hypervisor.Site.Settings.DisableStorageAlarmEmails]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.Acl.UserGroup]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.Acl.ResourceRole]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.Acl.Permissions]
+required = false
+type = "int"
+
+[HypervisorHost.Hypervisor.Site.SiteID]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.Site.Code]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.Site.Name]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.Site.Topology]
+required = false
+type = "int"
+
+[HypervisorHost.Hypervisor.Site.TenantID]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.Site.Active]
+required = false
+type = "bool"
+
+[Storage.Hypervisor.Site.SiteID]
+required = false
+type = "str"
+
+[Storage.Hypervisor.Site.Code]
+required = false
+type = "str"
+
+[Storage.Hypervisor.Site.Name]
+required = false
+type = "str"
+
+[Storage.Hypervisor.Site.Topology]
+required = false
+type = "int"
+
+[Storage.Hypervisor.Site.TenantID]
+required = false
+type = "str"
+
+[Storage.Hypervisor.Site.Active]
+required = false
+type = "bool"
+
+[VirtualMachine.Hypervisor.Site.Region.RegionID]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Site.Region.Code]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Site.Region.Name]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Site.Region.TenantID]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Site.Region.Active]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Site.Settings.AllowCpuRamAdjust]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Site.Settings.DisableStorageAlarmEmails]
+required = false
+type = "str"
+
+[Network.Hypervisor.Site.Region.RegionID]
+required = false
+type = "str"
+
+[Network.Hypervisor.Site.Region.Code]
+required = false
+type = "str"
+
+[Network.Hypervisor.Site.Region.Name]
+required = false
+type = "str"
+
+[Network.Hypervisor.Site.Region.TenantID]
+required = false
+type = "str"
+
+[Network.Hypervisor.Site.Region.Active]
+required = false
+type = "bool"
+
+[Network.Hypervisor.Site.Settings.AllowCpuRamAdjust]
+required = false
+type = "bool"
+
+[Network.Hypervisor.Site.Settings.DisableStorageAlarmEmails]
+required = false
+type = "bool"
+
+[Hypervisor.Site.Settings.Authentication.Endpoint]
+required = false
+type = "str"
+
+[Hypervisor.Site.Settings.Storage.SupportedProvisioningTypes]
+required = false
+type = "str"
+
+[Hypervisor.Site.Settings.Storage.IsolationLevel]
+required = false
+type = "str"
+
+[Hypervisor.Site.Settings.Rid.LocationCode]
+required = false
+type = "str"
+
+[Hypervisor.Site.Settings.Rid.CountryCode]
+required = false
+type = "str"
+
+[Hypervisor.Site.Settings.VSphere.RenameResourceOnAssignment]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.Site.Region.RegionID]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.Site.Region.Code]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.Site.Region.Name]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.Site.Region.TenantID]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.Site.Region.Active]
+required = false
+type = "bool"
+
+[HypervisorHost.Hypervisor.Site.Settings.AllowCpuRamAdjust]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.Site.Settings.DisableStorageAlarmEmails]
+required = false
+type = "str"
+
+[Storage.Hypervisor.Site.Region.RegionID]
+required = false
+type = "str"
+
+[Storage.Hypervisor.Site.Region.Code]
+required = false
+type = "str"
+
+[Storage.Hypervisor.Site.Region.Name]
+required = false
+type = "str"
+
+[Storage.Hypervisor.Site.Region.TenantID]
+required = false
+type = "str"
+
+[Storage.Hypervisor.Site.Region.Active]
+required = false
+type = "bool"
+
+[Storage.Hypervisor.Site.Settings.AllowCpuRamAdjust]
+required = false
+type = "str"
+
+[Storage.Hypervisor.Site.Settings.DisableStorageAlarmEmails]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Site.Settings.Authentication.Endpoint]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Site.Settings.Storage.SupportedProvisioningTypes]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Site.Settings.Storage.IsolationLevel]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Site.Settings.Rid.LocationCode]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Site.Settings.Rid.CountryCode]
+required = false
+type = "str"
+
+[VirtualMachine.Hypervisor.Site.Settings.VSphere.RenameResourceOnAssignment]
+required = false
+type = "str"
+
+[Network.Hypervisor.Site.Settings.Authentication.Endpoint]
+required = false
+type = "str"
+
+[Network.Hypervisor.Site.Settings.Storage.SupportedProvisioningTypes]
+required = false
+type = "str"
+
+[Network.Hypervisor.Site.Settings.Storage.IsolationLevel]
+required = false
+type = "str"
+
+[Network.Hypervisor.Site.Settings.Rid.LocationCode]
+required = false
+type = "str"
+
+[Network.Hypervisor.Site.Settings.Rid.CountryCode]
+required = false
+type = "str"
+
+[Network.Hypervisor.Site.Settings.VSphere.RenameResourceOnAssignment]
+required = false
+type = "bool"
+
+[HypervisorHost.Hypervisor.Site.Settings.Authentication.Endpoint]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.Site.Settings.Storage.SupportedProvisioningTypes]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.Site.Settings.Storage.IsolationLevel]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.Site.Settings.Rid.LocationCode]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.Site.Settings.Rid.CountryCode]
+required = false
+type = "str"
+
+[HypervisorHost.Hypervisor.Site.Settings.VSphere.RenameResourceOnAssignment]
+required = false
+type = "str"
+
+[Storage.Hypervisor.Site.Settings.Authentication.Endpoint]
+required = false
+type = "str"
+
+[Storage.Hypervisor.Site.Settings.Storage.SupportedProvisioningTypes]
+required = false
+type = "str"
+
+[Storage.Hypervisor.Site.Settings.Storage.IsolationLevel]
+required = false
+type = "str"
+
+[Storage.Hypervisor.Site.Settings.Rid.LocationCode]
+required = false
+type = "str"
+
+[Storage.Hypervisor.Site.Settings.Rid.CountryCode]
+required = false
+type = "str"
+
+[Storage.Hypervisor.Site.Settings.VSphere.RenameResourceOnAssignment]
+required = false
+type = "str"

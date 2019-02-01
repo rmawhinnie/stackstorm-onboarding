@@ -1,0 +1,32 @@
+---
+- Tenant: Virtustream
+  ServiceOffering: Tenant Shared Services
+  ComputeProfile: TSS Basic
+  Site: MNSS
+  Template: esre-bionic
+  VmName: TESTVM-ESRE
+  Description: TESTVM
+  NumCpu: 2
+  RamAllocatedMB: 2048
+  Disks:
+    - Storage: datastore-23
+      Profile: Tier 1 Block - IZ - Local Only
+      CapacityKB: 40000000
+      DeviceKey: 2000
+  Networks:
+    - NetworkName: vxw-dvs-33-virtualwire-53-sid-100032-monitoring-nsx-tss-vm.sss.mnss01
+      AdapterType: 1
+      DeviceKey: 0
+      MacAddress: None
+  Customizations:
+    AdministratorPassword: ChangeMe
+    Networks:
+      NicNumber: 0
+      IpAddress: 100.95.1.70
+      SubnetMask: 255.255.255.192
+      DefaultGateway: 100.95.1.65
+      DnsAddress: 10.44.20.1
+    AuthorizedKeys:
+      - ssh-rsa yourgkeygoeshere you@yourdomain.org
+    RunOnceCommands:
+      - /bin/touch /var/lib/randall_was_here

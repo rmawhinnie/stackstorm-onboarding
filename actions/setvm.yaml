@@ -1,0 +1,39 @@
+---
+name: vm.setvm
+pack: onboarding
+runner_type: "python-script"
+description: Search resources for matching search criterea
+enabled: true
+entry_point: "lib/setvm.py"
+parameters:
+    xstream_url:
+      type: string
+      description: URL of xStream
+      default: "{{config_context.xstream_url}}"
+      required: true
+    public_key:
+      type: string
+      description: Public Key for xStream
+      default: "{{config_context.xstream_public_key}}"
+      required: true
+    private_key:
+      type: string
+      description: Privite Key for xStream
+      default: "{{config_context.xstream_private_key}}"
+      required: true
+      secret: true
+    tenant_id:
+      type: string
+      description: TenantID you wish to preform actions against
+      default: "{{config_context.tenant_id}}"
+      required: true
+
+    vmspec:
+      type: object
+      description: Json Serlization of Rerource Spec paramaters
+      required: true
+    cloudinitspec:
+      type: object
+      description: Json Serlization of Customizations
+      default: {}
+      required: false

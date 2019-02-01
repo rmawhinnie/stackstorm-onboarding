@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+xstream = {ref = "08dd9f161feba22748ccd395654b5a83722007be", git = "https://cicduser:f35c321e1dd9f4ffa94a3d200a2da371104f2909@github.emcrubicon.com/mawhir/python-xstream.git"}
+PyYAML = "*"
+
+[dev-packages]
+ipython = "*"
+
+[requires]
+python_version = "3.6"

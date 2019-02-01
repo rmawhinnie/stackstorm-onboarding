@@ -1,0 +1,30 @@
+---
+enabled: true
+runner_type: mistral-v2
+entry_point: workflows/buildnic.yaml
+name: nic.build
+pack: onboarding
+parameters:
+  workflow:
+    default: onboarding.nic.build.main
+    immutable: true
+    type: string
+  TenantID:
+    required: true
+    type: string
+    default: 6286e731-8637-4e43-b205-6f026c8e09db
+
+  NetworkName:
+    required: true
+    type: string
+  AdapterType:
+    required: true
+    type: integer
+    default: 5
+  DeviceKey:
+    required: true
+    type: integer
+    default: 0
+  MacAddress:
+    required: false
+    type: string

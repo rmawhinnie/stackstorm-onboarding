@@ -1,0 +1,72 @@
+version: '2.0'
+name: onboarding.vm.buildmulti
+description: Build VM through xstream api
+workflows:
+  main:
+    type: direct
+    input:
+      - spec_file
+    output:
+      vmspecs: '{{ _.vmspecs }}'
+      BuildStatus: '{{ _.BuildStatus }}'
+      BuildSpec: '{{ _.BuildSpec }}'
+    tasks:
+      getvmspecs:
+        workflow: getvmspecs
+        input:
+          file_name: '{{ _.spec_file }}'
+        publish:
+          vmspecs: "{{ task('getvmspecs').result.vmspecs }}"
+        on-success:
+          - buildvms
+      buildvms:
+        workflow: buildvms
+        input:
+          vmspecs: '{{ _.vmspecs }}'
+        publish:
+          BuildStatus: "{{ task('buildvms').result.BuildStatus }}"
+          BuildSpec: "{{ task('buildvms').result.BuildSpec }}"
+
+  getvmspecs:
+    type: direct
+    input:
+      - file_name
+    output:
+      vmspecs: '{{ _.vmspecs }}'
+    tasks:
+      getspecfile:
+        action: onboarding.read_file
+        input:
+          repo_name: 'Tenants/VirtualMachines'
+          file_name: '{{ _.file_name }}'
+        publish:
+          vmspecs: "{{ task('getspecfile').result.result }}"
+
+  buildvms:
+    type: direct
+    input:
+      - vmspecs
+    output:
+      BuildStatus: '{{ _.BuildStatus }}'
+      BuildSpec: '{{ _.BuildSpec }}'
+    tasks:
+      buildVM:
+        action: onboarding.vm.build
+        with-items: "vm in {{ _.vmspecs }}"
+        input:
+          Tenant: '{{ _.vm.Tenant }}'
+          ServiceOffering: '{{ _.vm.ServiceOffering }}'
+          ComputeProfile: '{{ _.vm.ComputeProfile }}'
+          Site: '{{ _.vm.Site }}'
+          Template: '{{ _.vm.Template }}'
+          VmName: '{{ _.vm.VmName }}'
+          Description: '{{ _.vm.Description }}'
+          NumCpu: '{{ _.vm.NumCpu }}'
+          RamAllocatedMB: '{{ _.vm.RamAllocatedMB }}'
+          OS: '{{ _.vm.OS }}'
+          Disks: '{{ _.vm.Disks }}'
+          Networks: '{{ _.vm.Networks }}'
+          Customizations: '{{ _.vm.Customizations }}'
+        publish:
+          BuildStatus: "{{ task('buildVM').result | map(attribute='TaskStatus') | list }}"
+          BuildSpec: "{{ task('buildVM').result | map(attribute='vmspec') | list }}"
